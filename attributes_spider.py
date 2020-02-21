@@ -1,6 +1,6 @@
 import scrapy
 
-class AttrbitutesSpider(scrapy.Spider):
+class AttributesSpider(scrapy.Spider):
     name = "attributes"
     start_urls = ['https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes']
 
