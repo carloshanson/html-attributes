@@ -7,5 +7,6 @@ verify_ssl = true
 ipython = "*"
 
 [packages]
+Pygments = ">=2.7.4"
 scrapy = "*"
 
