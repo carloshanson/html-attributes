@@ -10,7 +10,21 @@ class AttributesSpider(scrapy.Spider):
             if experimental:
                 continue
             attributes = set()
-            attributes.add(row.xpath('td[1]/code/a[contains(@href, "Attributes")]/text()').get())
+            attr_links = [
+                row.xpath('td[1]/code/a/text()'),
+                row.xpath('td[1]/a/code/text()'),
+                row.xpath('td[1]/a/text()'),
+            ]
+            attr_found = False
+            link = None
+            for link in attr_links:
+                if link:
+                    attr_found = True
+                    break
+            if link is None:
+                attributes.add('check html on mozilla site')
+            else:
+                attributes.add(link.get())
             attributes.add(row.xpath('td[1]/code/a[contains(@href, "Global_attributes")]/text()').get())
             attributes.add(row.xpath('td[1]/code/a/text()').get())
             attributes.add(row.xpath('td[1]/a/code/text()').get())
