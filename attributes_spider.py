@@ -5,7 +5,7 @@ class AttributesSpider(scrapy.Spider):
     start_urls = ['https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes']
 
     def parse(self, response):
-        for row in response.xpath('//article/table/tbody/tr'):
+        for row in response.xpath('//article/div/table/tbody/tr'):
             experimental = row.xpath('td[1]/span/i/@class').get() == 'icon-beaker'
             if experimental:
                 continue
